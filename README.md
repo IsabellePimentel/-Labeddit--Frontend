@@ -10,6 +10,8 @@ https://github.com/IsabellePimentel/Labeddit-Backend
 Postman: 
 https://documenter.getpostman.com/view/25517486/2s93JzKzta
 
+Render:
+https://labbedit-isa-api.onrender.com
 
 # Labeddit Frontend (incompleto)
 
