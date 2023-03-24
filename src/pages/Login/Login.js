@@ -2,13 +2,14 @@ import { StyleMainLogin, StyleSectionSignup } from "./styleLogin"
 import logo from "../../assets/logoLabEddit.svg"
 import {  useState } from "react"
 import axios from "axios"
-import {  goToHome } from "../../router/coordinator"
+import {  goToHome, goToSignUp } from "../../router/coordinator"
 import { useNavigate } from "react-router-dom"
-import {  useEffect } from "react"
+import {  useEffect, useContext } from "react"
+import {GlobalContext} from "../../context/GlobalContext"
 
 function Login(){
     const BASE_URL = "https://labbedit-isa-api.onrender.com"
-
+    const context = useContext(GlobalContext)
     const navigate = useNavigate()
 
 
@@ -61,6 +62,7 @@ function Login(){
                 </div>
                 <div>
                     <button onClick={()=>logar()}>Continuar</button>
+                    <button onClick={()=>goToSignUp(navigate)} className="btn-signup">Crie uma conta</button>
                 </div>
             </StyleSectionSignup>
         </StyleMainLogin>

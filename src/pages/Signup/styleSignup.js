@@ -1,13 +1,15 @@
 import styled from "styled-components";
 
-
-export const StyleMainLogin = styled.main`
+export const StyleMainSignup = styled.main`
     display: flex;
     justify-content: center;
     align-items: center;
 
   
-
+    h1{
+        font-weight: 600;
+        font-size: 35px;
+    }
     
     button{
         width: 300px;
@@ -48,12 +50,17 @@ export const StyleMainLogin = styled.main`
     
 `
 
-export const StyleSectionSignup = styled.section`
+
+
+
+export const StyleSectionLoginSignup = styled.section`
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100vh;   
+    width: 90%;
+    height: 90vh;
+
     div{
         height: 30%;
         width: 100%;
@@ -62,5 +69,11 @@ export const StyleSectionSignup = styled.section`
         align-items: center;
         flex-direction: column;
         gap: 1vh;
+        
+        .CheckBox{
+            height: 15px;
+            width: 15px;
+            margin-right: 5px;
+        }
     }
 `
