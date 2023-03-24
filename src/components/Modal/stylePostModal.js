@@ -1,23 +1,36 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
-export const StyleMainHome = styled.main`
+export const MainModal = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
-
-
+    flex-direction: column;
+    background-color: #FFFFFF;
+    position: absolute;
+    width: 100%;
+    min-height: 100vh;
+    header{
+        margin-top: 30px;
+    }
+    @media screen and (min-device-width: 500px){
+        top: 2%;
+        left: 4%;
+        width: 90%;
+        position: absolute;
+    }    
 `
 
-export const Section = styled.section`
+export const StyleSection = styled.section`
     display: flex;
     align-items: center;
     flex-direction: column;
     width: 90%;
-    height: 100vh;
+    // min-height: 100vh;
+    animation: FromRight .7s .4s backwards;
     div:first-child{
         margin-top: 2vh;
-        min-height: 26vh;
+        min-height: 40vh;
+        margin-bottom: 2vh;
         width: 100%;
     }
     div{
@@ -77,10 +90,20 @@ export const Section = styled.section`
                 gap: 18px;
                 border: 1px solid #E0E0E0;
                 border-radius: 28px;
+                img:hover{
+                    cursor:pointer;
+                }
             }
-            span:hover{
-                cursor: pointer;
-            }
+        }
+    }
+    @keyframes FromRight{
+        from{
+            opacity: 0;
+            transform: translateX(20px);
+        }
+        to{
+            opacity: 1;
+            transform: translateX(0px);
         }
     }
 `

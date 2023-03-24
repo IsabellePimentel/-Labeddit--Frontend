@@ -1,10 +1,22 @@
-import axios from "axios"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 function GlobalState(){
 
+    const [posts, setPosts] = useState([])
+    const [urlPost, setUrlPost] = useState('')
+    const [modal, setModal] = useState(false)
+    const [actionModal, setActionModal] = useState('')
 
-    return{}
+    return{
+        posts,
+        setPosts,
+        urlPost, 
+        setUrlPost,
+        modal, 
+        setModal,
+        actionModal, 
+        setActionModal
+    }
 
 }
 
