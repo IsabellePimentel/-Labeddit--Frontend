@@ -15,7 +15,7 @@ function Home(){
     const [content, setContent] = useState('')
     useEffect(()=>{
         buscarPosts()
-    },[])
+        },[])
 
 
 
@@ -35,6 +35,19 @@ function Home(){
             }) 
             context.setPosts(response.data)
             console.log(response.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const buscarComments = async(postId)=>{
+        try {
+            const response = await axios.get(`${BASE_URL}/posts/${postId}/comments`,{
+                headers: {
+                    Authorization: 'Bearer ' + window.localStorage.getItem("labeddit_token")
+                }
+            }) 
+            context.setComments(response.data)
         } catch (error) {
             console.log(error)
         }
@@ -67,7 +80,10 @@ function Home(){
                 <>
                 <PostModal
                 postId={context.urlPost}
-                buscarPosts={buscarPosts}/> 
+                buscarPosts={buscarPosts}
+                buscarComments={buscarComments(context.urlPost)}
+                comments={context.comments}
+                /> 
                 </>
                 : 
                 ''}

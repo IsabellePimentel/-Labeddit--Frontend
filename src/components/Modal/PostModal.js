@@ -15,6 +15,7 @@ function PostModal(props){
 
     const context = useContext(GlobalContext)
     const [post, setPost] = useState({})
+    const [comments, setComments] = useState({})
     const [content, setContent] = useState('')
 
   
@@ -30,6 +31,8 @@ function PostModal(props){
             console.log(error)
         }
     }
+
+
 
     useEffect(()=>{
         buscarPosts()
@@ -111,14 +114,14 @@ function PostModal(props){
                     </div>
 
                     <div>
-                        {post && post?.comments_post?.map((comment)=>{return(
+                        {props.comments && props.comments?.map((comment)=>{return(
                         <article key={comment.id}>
                             <p className="subText">Enviado por: {comment.creatorName}</p>
                             <p>{comment.content}</p>
                             <p className="menuPost">
                                 <span className="subTextBold">
                                     <img src={likeImg} onClick={()=>like(comment.id)} />
-                                    {comment.likes}
+                                 {comment.likes}
                                     <img src={dislikeImg} onClick={()=>dislike(comment.id)} /> 
                                 </span> 
                             </p>
