@@ -56,6 +56,23 @@ export const StyleSection = styled.section`
             border-radius: 12px;
             width: 100%;
         }
+
+        button{
+            width: 300px;
+            height: 40px;
+            background: linear-gradient(100deg, #FF6589 1%, #F8B24E 90%);
+            border-radius: 30px;
+            border: none;
+            font-weight: bold;
+            font-size: 15px;
+            color: white;  
+        }
+        button:hover{
+            cursor:pointer;
+            opacity: 0.8;
+        }
+
+        
         article{
             display: flex;
             width: 100%;
