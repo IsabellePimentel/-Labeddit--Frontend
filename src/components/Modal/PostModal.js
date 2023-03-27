@@ -60,12 +60,12 @@ function PostModal(props){
 
 
 
-    const like = async (postId)=>{
+    const like = async ( idComment)=>{
         try {
             let body = {
                 like: true,
             }
-            await axios.put(`${BASE_URL}/posts/${postId}/likedislike`,body,{
+            await axios.put(`${BASE_URL}/posts/${props.postId}/comments/${idComment}/likedislike`,body,{
                 headers:{
                     Authorization: 'Bearer ' + window.localStorage.getItem("labeddit_token")
                 }})
@@ -76,12 +76,12 @@ function PostModal(props){
         }
     }
 
-    const dislike = async (postId)=>{
+    const dislike = async ( idComment)=>{
         try {
             let body = {
                 like: false,
             }
-            await axios.put(`${BASE_URL}/posts/${postId}/likedislike`,body,{
+            await axios.put(`${BASE_URL}/posts/${props.postId}/comments/${idComment}/likedislike`,body,{
                 headers:{
                     Authorization:'Bearer ' +  window.localStorage.getItem("labeddit_token")
                 }})
