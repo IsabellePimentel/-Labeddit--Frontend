@@ -15,18 +15,43 @@ function PostModal(props){
 
     const context = useContext(GlobalContext)
     const [post, setPost] = useState({})
-    const [comments, setComments] = useState({})
     const [content, setContent] = useState('')
-
+    const [comments, setComments] = useState([])
   
-
     const buscarPosts = async()=>{
         try {
-            const response = await axios.get(`${BASE_URL}/posts/${context.urlPost}`,{
+            let auxPost = '' 
+            const response = await axios.get(`${BASE_URL}/posts/${props.postId}`,{
                 headers:{
                     Authorization: 'Bearer ' + window.localStorage.getItem("labeddit_token")
                 }})
-            setPost(response.data[0])
+                auxPost = response.data[0]
+                console.log("Post", auxPost)  
+            setPost(auxPost)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+        useEffect(()=>{
+            buscarPosts()
+        buscarComments(props.postId)
+     
+    },
+    [])
+
+ 
+
+    const buscarComments = async()=>{
+        try {
+            let auxComment = '' 
+            const response = await axios.get(`${BASE_URL}/posts/${context.urlPost}/comments`,{
+                headers:{
+                    Authorization: 'Bearer ' + window.localStorage.getItem("labeddit_token")
+                }})
+                auxComment = response.data
+                console.log("Post", response.data)  
+            setComments(auxComment)
         } catch (error) {
             console.log(error)
         }
@@ -34,10 +59,6 @@ function PostModal(props){
 
 
 
-    useEffect(()=>{
-        buscarPosts()
-    },
-    [])
 
     const like = async (postId)=>{
         try {
@@ -81,8 +102,8 @@ function PostModal(props){
                     Authorization: 'Bearer ' + window.localStorage.getItem("labeddit_token")
                 }})         
             setContent('')
-            buscarPosts()
-            props.buscarPosts()
+           
+          
             } catch (error) {
             console.log(error)
         }
@@ -91,32 +112,17 @@ function PostModal(props){
     return(
         <>         
             <MainModal>
-                <Header/>
+           <Header />
                 <StyleSection>
                     <div>
-                        <article>
-                            <p className="subText">Enviado por: {post && post?.creator?.creatorName}</p>
-                            <p>{post?.content}</p>
-                            <p className="menuPost">
-                                <span className="subTextBold">
-                                    <img src={likeImg} onClick={()=>like(post.id)} />
-                                    { /*post.likes */}
-                                    <img src={dislikeImg} onClick={()=>dislike(post.id)} /> 
-                                </span> 
-                                <span className="subText">
-                                    <img src={commentImg}  />
-                                    { /* post.comments */}
-                                </span>
-                            </p>
-                        </article>
                         <input value={content} onChange={(event)=>setContent(event.target.value)} className="InputPost" placeholder="Escreva seu post..."/>
                         <button onClick={()=>{insertNewComment()}}>Responder</button>
                     </div>
 
                     <div>
-                        {props.comments && props.comments?.map((comment)=>{return(
+                        {comments && comments?.map((comment)=>{return(
                         <article key={comment.id}>
-                            <p className="subText">Enviado por: {comment.creatorName}</p>
+                            <p className="subText">Enviado por: {comment.creator?.creatorName}</p>
                             <p>{comment.content}</p>
                             <p className="menuPost">
                                 <span className="subTextBold">

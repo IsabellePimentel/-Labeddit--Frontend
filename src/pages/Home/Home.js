@@ -13,6 +13,7 @@ function Home(){
     const context = useContext(GlobalContext)
     const navigate = useNavigate()
     const [content, setContent] = useState('')
+
     useEffect(()=>{
         buscarPosts()
         },[])
@@ -74,6 +75,12 @@ function Home(){
  
     return(
         <>
+
+{context.modal ? 
+            <section className="boxOverlay" />
+            : 
+            ''}
+            
         <Header/>
         <StyleMainHome>
         {context.modal && context.actionModal === "post" ? 
@@ -81,8 +88,7 @@ function Home(){
                 <PostModal
                 postId={context.urlPost}
                 buscarPosts={buscarPosts}
-                buscarComments={buscarComments(context.urlPost)}
-                comments={context.comments}
+               
                 /> 
                 </>
                 : 
