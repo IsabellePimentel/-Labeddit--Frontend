@@ -13,10 +13,10 @@ https://documenter.getpostman.com/view/25517486/2s93JzKzta
 Render:
 https://labbedit-isa-api.onrender.com
 
-# Labeddit Frontend 
+# Labeddit - Frontend 
 
 Link de acesso:
 https://github.com/IsabellePimentel/-Labeddit--Frontend
 
-Acesse em:
+Surge:
 https://labeddit-isa.surge.sh/
