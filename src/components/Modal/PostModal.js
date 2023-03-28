@@ -103,7 +103,7 @@ function PostModal(props){
                 }})         
             setContent('')
            
-          
+            buscarComments(props.postId)
             } catch (error) {
             console.log(error)
         }
